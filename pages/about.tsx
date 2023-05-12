@@ -1,7 +1,8 @@
-import { MainLayout } from '@/components/layout'
+import { AdminLayout, MainLayout } from '@/components/layout'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-
+import { Box, Typography } from '@mui/material'
+import { roboto, theme } from '../utils/index'
 export interface AboutPageProps {}
 
 export default function AboutPage(props: AboutPageProps) {
@@ -35,20 +36,24 @@ export default function AboutPage(props: AboutPageProps) {
   }
 
   return (
-    <div>
-      <h1>About Page</h1>
-
+    <Box>
+      <Typography
+        component="h1"
+        variant="h3"
+        color="primary.main"
+      >
+        About Page
+      </Typography>
       <ul>
         {postList.map((post: any) => (
           <li key={post.id}>{post.title}</li>
         ))}
       </ul>
-
       <button onClick={handleChangeClick}>next page</button>
-    </div>
+    </Box>
   )
 }
-AboutPage.Layout = MainLayout
+AboutPage.Layout = AdminLayout
 export async function getStaticProps() {
   console.log('get static props about')
   return {

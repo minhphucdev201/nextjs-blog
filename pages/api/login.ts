@@ -28,6 +28,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
         try {
           const { accessToken, expiredAt } = JSON.parse(body)
           // convert token to cookies
+          console.log({ accessToken, expiredAt })
           const cookies = new Cookies(req, res, { secure: process.env.NODE_ENV !== 'development' })
           cookies.set('access_token', accessToken, {
             httpOnly: true,
