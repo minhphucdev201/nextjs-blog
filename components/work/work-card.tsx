@@ -14,7 +14,7 @@ export function WorkCard({ work }: WorkCardProps) {
         <Image
           src={work.thumbnailUrl}
           alt="thumbnail card featured"
-          layout="responsive"
+          // layout="responsive"
           width={246}
           height={180}
         />

@@ -5,6 +5,7 @@ import { Box } from '@mui/material'
 const Home: NextPageWithLayout = () => {
   return (
     <Box>
+      <Seo data={} />
       <HeroSection />
       <RecentPost />
       <FeaturedWork />
