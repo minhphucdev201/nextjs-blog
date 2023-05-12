@@ -1,6 +1,9 @@
 import * as React from 'react';
 export interface SeoData{
-    
+    title: string,
+    description: string
+    url: string
+    thumbnailUrl: string
 }
 
 export interface SeoProps {
