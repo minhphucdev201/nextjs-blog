@@ -2,7 +2,7 @@ import { AdminLayout, MainLayout } from '@/components/layout'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import { Box, Typography } from '@mui/material'
-import { roboto, theme } from '../utils/index'
+import { roboto, theme } from '../utils'
 export interface AboutPageProps {}
 
 export default function AboutPage(props: AboutPageProps) {
@@ -37,11 +37,7 @@ export default function AboutPage(props: AboutPageProps) {
 
   return (
     <Box>
-      <Typography
-        component="h1"
-        variant="h3"
-        color="primary.main"
-      >
+      <Typography component="h1" variant="h3" color="primary.main">
         About Page
       </Typography>
       <ul>

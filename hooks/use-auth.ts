@@ -1,5 +1,5 @@
+import { authApi } from '@/api-client'
 import useSWR, { SWRConfiguration } from 'swr'
-import { authApi } from '../api-client'
 export function useAuth(options?: Partial<SWRConfiguration>) {
   const {
     data: profile,

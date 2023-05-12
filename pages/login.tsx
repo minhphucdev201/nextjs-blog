@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { authApi } from '../api-client'
-import { useAuth } from '../hooks'
 import { useRouter } from 'next/router'
+import { useAuth } from '@/hooks'
 
 export default function LoginPage() {
   const router = useRouter()

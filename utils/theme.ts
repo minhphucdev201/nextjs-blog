@@ -71,6 +71,19 @@ export let theme = createTheme({
         },
       ],
     },
+    MuiChip: {
+      variants: [
+        {
+          props: { color: 'secondary' },
+          style: {
+            color: 'white',
+            fontWeight: 'bold',
+            backgroundColor: '#142850',
+            fontSize: '16px',
+          },
+        },
+      ],
+    },
   },
   typography: {
     fontFamily: ['Heebo, sans-serif', 'Raleway, sans-serif'].join(','),

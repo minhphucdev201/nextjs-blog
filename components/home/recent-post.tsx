@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Box, Container, Stack, Typography, Link as MuiLink } from '@mui/material'
 import Link from 'next/link'
 import { PostCard } from './post-card'
-import { Post } from '@/models/index'
+import { Post } from '@/models'
 
 export function RecentPost() {
   const postList: Post[] = [

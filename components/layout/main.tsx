@@ -1,10 +1,10 @@
-import { LayoutProps } from '@/models/index'
+import { LayoutProps } from '@/models'
 import Link from 'next/link'
 import * as React from 'react'
 import { Stack } from '@mui/material'
-import { Header } from '../common'
-import { Footer } from '../common'
 import { Box, Container } from '@mui/system'
+import { Header } from '../common/header'
+import { Footer } from '../common'
 export function MainLayout({ children }: LayoutProps) {
   return (
     <Stack minHeight="100vh">
