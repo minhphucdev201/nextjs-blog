@@ -1,9 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
-<<<<<<< HEAD
 
-=======
->>>>>>> ba562a2793d0929159b5ed115cd15874dc28026a
 export interface SeoData {
   title: string
   description: string
