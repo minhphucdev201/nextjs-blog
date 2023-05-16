@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import * as React from 'react'
+
 export interface SeoData {
   title: string
   description: string

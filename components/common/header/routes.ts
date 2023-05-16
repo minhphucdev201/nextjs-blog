@@ -7,8 +7,8 @@ export const ROUTER_LIST = [
     label: 'Works',
     path: '/works',
   },
-  {
-    label: 'Blog',
-    path: '/blog',
-  },
+  // {
+  //   label: 'Blog',
+  //   path: '/blog',
+  // },
 ]
