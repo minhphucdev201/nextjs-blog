@@ -2,44 +2,49 @@ import { GetStaticProps, GetStaticPropsContext } from 'next'
 import * as React from 'react'
 import Link from 'next/link'
 import { getPostList } from '@/utils/posts'
-export interface BlogListPage {
-  posts: any[]
+import { Post } from '@/models'
+import { MainLayout } from '@/components/layout'
+import PostItem from '@/components/blog/post-item'
+import { Box, Container, Typography } from '@mui/material'
+
+export interface BlogListPageProps {
+  posts: Post[]
 }
 
-export default function BlogListPage({ posts }: BlogListPage) {
-  // console.log('posts', posts)
+export default function BlogListPage({ posts }: BlogListPageProps) {
+  console.log('posts', posts)
 
   return (
-    <div>
-      <h1>Blog List Page</h1>
-
-      <ul>
-        {posts.map((post) => (
-          <li key={post.id}>
-            <Link href={`/posts/${post.id}`} legacyBehavior>
-              <a>{post.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Box>
+      <Container>
+        <Typography component="h1" variant="h4" fontWeight="bold" pb={5}>
+          Blog
+        </Typography>
+        <Box component="ul" sx={{ listStyle: 'none', p: 0 }}>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <Link href={`/blog/${post.slug}`} legacyBehavior>
+                <a>
+                  <PostItem post={post} />
+                </a>
+              </Link>
+            </li>
+          ))}
+        </Box>
+      </Container>
+    </Box>
   )
 }
 
-export const getStaticProps: GetStaticProps<BlogListPage> = async () => {
-  // server-side
-  // build-time
-  // console.log('static props')
-  // const response = await fetch('https://js-post-api.herokuapp.com/api/posts?_page=1')
-  // const data = await response.json()
-  // console.log(data)
+BlogListPage.Layout = MainLayout
 
+export const getStaticProps: GetStaticProps<BlogListPageProps> = async () => {
   // convert markdown files into list of javascript object
-  const data = await getPostList()
+  const postList = await getPostList()
 
   return {
     props: {
-      posts: data.map((x: any) => ({ id: x.id, title: x.title })),
+      posts: postList,
     },
   }
 }

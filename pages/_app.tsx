@@ -8,7 +8,7 @@ import { SWRConfig } from 'swr'
 import { createEmotionCache, theme } from '@/utils'
 import axiosClient from '@/api-client/axios-client'
 import { AppPropsWithLayout } from '@/models'
-
+import '../styles/prism.css'
 // Client-side cache, shared for the whole session of the user in the browser.
 
 const clientSideEmotionCache = createEmotionCache()

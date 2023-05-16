@@ -15,7 +15,7 @@ export function Seo({ data }: SeoProps) {
   const { title, description, url, thumbnailUrl } = data
   return (
     <Head>
-      <title>Minh Phúc Blog: Trang chủ</title>
+      <title>{title}</title>
       <meta name="title" content={title} />
       <meta name="description" content={description} />
 
