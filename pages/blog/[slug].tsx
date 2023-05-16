@@ -35,8 +35,6 @@ export default function PostDetailPage({ post }: BlogPageProps) {
         }}
       />
       <Container>
-        <h1>Post Detail Page</h1>
-
         <p>{post.title}</p>
         <p>name: {post.author?.name}</p>
         <p>{post.description}</p>
