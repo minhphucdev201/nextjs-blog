@@ -1,6 +1,8 @@
 import * as React from 'react'
 import { useRouter } from 'next/router'
 import { useAuth } from '@/hooks'
+import LoginForm from '@/components/auth/login-form'
+import { LoginPayload } from '@/models'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -9,7 +11,10 @@ export default function LoginPage() {
   })
   async function handleLogin() {
     try {
-      await login()
+      await login({
+        username: 'test1',
+        password: '123456',
+      })
       router.push('/about')
       console.log('redirect login')
     } catch (error) {
@@ -30,6 +35,15 @@ export default function LoginPage() {
       console.log('fail to logout', error)
     }
   }
+
+  async function handleLoginSubmit(payload: LoginPayload) {
+    try {
+      await login(payload)
+      // router.push('/about')
+    } catch (error) {
+      console.log('fail to login', error)
+    }
+  }
   return (
     <div>
       <h1>Login Page</h1>
@@ -37,6 +51,7 @@ export default function LoginPage() {
       <button onClick={handleLogin}>Login</button>
       <button onClick={handleLogout}>Logout</button>
       <button onClick={() => router.push('/about')}>Go to about</button>
+      <LoginForm onSubmit={handleLoginSubmit} />
     </div>
   )
 }

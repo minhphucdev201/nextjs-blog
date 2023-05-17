@@ -1,4 +1,5 @@
 import { authApi } from '@/api-client'
+import { LoginPayload } from '@/models'
 import useSWR, { SWRConfiguration } from 'swr'
 export function useAuth(options?: Partial<SWRConfiguration>) {
   const {
@@ -10,13 +11,9 @@ export function useAuth(options?: Partial<SWRConfiguration>) {
     revalidateOnFocus: false,
     ...options,
   })
-  console.log({ profile, error })
   const firstLoading = profile === undefined && error === undefined
-  async function login() {
-    await authApi.login({
-      username: 'phucdev',
-      password: '123456',
-    })
+  async function login(payload: LoginPayload) {
+    await authApi.login(payload)
     await mutate()
   }
   async function logout() {
