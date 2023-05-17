@@ -36,6 +36,8 @@ export function InputField({
       inputRef={ref}
       margin="normal"
       {...rest}
+      error={!!error}
+      helperText={error?.message}
     />
   )
 }
