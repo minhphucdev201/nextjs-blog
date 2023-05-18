@@ -11,7 +11,6 @@ export type InputFieldProps = TextFieldProps & {
 }
 export function InputField({
   name,
-  label,
   control,
   onChange: externalOnChange,
   onBlur: externalOnBlur,
@@ -29,6 +28,8 @@ export function InputField({
   return (
     <TextField
       size="small"
+      fullWidth
+      color="secondary"
       name={name}
       value={value}
       onChange={onChange}

@@ -25,6 +25,9 @@ export let theme = createTheme({
     text: {
       primary: '#21243D',
     },
+    success: {
+      main: '##e66767',
+    },
   },
   components: {
     MuiContainer: {

@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, InputAdornment } from '@mui/material'
+import { Box, Button, CircularProgress, IconButton, InputAdornment } from '@mui/material'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { InputField } from '../form'
@@ -16,21 +16,26 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
     password: yup.string().required('Vui lòng nhập Password').min(6, 'Password phải từ 6 kí tự'),
   })
   const [showPassword, setShowPassword] = useState(false)
-  const { control, handleSubmit } = useForm<LoginPayload>({
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<LoginPayload>({
     defaultValues: {
       username: '',
       password: '',
     },
     resolver: yupResolver(schema),
   })
-  function handleLoginSubmit(payload: LoginPayload) {
+  async function handleLoginSubmit(payload: LoginPayload) {
     console.log('values ==>', payload)
-    onSubmit?.(payload)
+    await onSubmit?.(payload)
   }
   return (
     <Box component="form" onSubmit={handleSubmit(handleLoginSubmit)}>
-      <InputField type="text" name="username" control={control} />
+      <InputField label="Username" type="text" name="username" control={control} />
       <InputField
+        label="Password"
         type={showPassword ? 'text' : 'password'}
         name="password"
         control={control}
@@ -48,7 +53,15 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
           ),
         }}
       />
-      <Button type="submit" variant="outlined">
+      <Button
+        disabled={isSubmitting}
+        startIcon={isSubmitting ? <CircularProgress color="inherit" size="1em" /> : null}
+        type="submit"
+        color="secondary"
+        variant="outlined"
+        fullWidth
+        sx={{ mt: 2 }}
+      >
         Login
       </Button>
     </Box>

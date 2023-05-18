@@ -6,6 +6,7 @@ export const ROUTER_LIST = [
   {
     label: 'Works',
     path: '/works',
+    requireLogin: true,
   },
   {
     label: 'Blog',
