@@ -30,7 +30,7 @@ export function WorkCard({ work }: WorkCardProps) {
             size="small"
           />
           <Typography color="GrayText" ml={3}>
-            {work.tagsList.join(', ')}
+            {work.tagList.join(', ')}
           </Typography>
         </Stack>
         <Typography>{work.shortDescription}</Typography>

@@ -10,7 +10,7 @@ export function FeaturedWork() {
     {
       id: '1',
       title: 'Designing Dashboards',
-      tagsList: ['Dashboard'],
+      tagList: ['Dashboard'],
       shortDescription:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
       fullDescription: '',
@@ -22,7 +22,7 @@ export function FeaturedWork() {
     {
       id: '2',
       title: 'Vibrant Portraits of 2020',
-      tagsList: ['Illustration'],
+      tagList: ['Illustration'],
       shortDescription:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
       fullDescription: '',
@@ -34,7 +34,7 @@ export function FeaturedWork() {
     {
       id: '3',
       title: '36 Days of Malayalam type',
-      tagsList: ['Typography'],
+      tagList: ['Typography'],
       shortDescription:
         'Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.',
       fullDescription: '',

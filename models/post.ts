@@ -9,7 +9,7 @@ export interface Post {
   id: string | number
   title: string
   publishedDate: string
-  tagsList: string[]
+  tagList: string[]
   description: string
   thumbnailUrl?: string
   slug: string

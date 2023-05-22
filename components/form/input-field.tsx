@@ -1,6 +1,6 @@
 import { TextField, TextFieldProps } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import { useController, Control } from 'react-hook-form'
 
 export type InputFieldProps = TextFieldProps & {
@@ -32,7 +32,10 @@ export function InputField({
       color="secondary"
       name={name}
       value={value}
-      onChange={onChange}
+      onChange={(event: ChangeEvent<HTMLInputElement>) => {
+        onChange(event)
+        externalOnChange?.(event)
+      }}
       onBlur={onBlur}
       inputRef={ref}
       margin="normal"

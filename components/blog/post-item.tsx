@@ -18,7 +18,7 @@ export default function PostItem({ post }: PostItemProps) {
           {format(new Date().getTime(), 'dd MMM yyy')}
         </Typography>
         <Divider orientation="vertical" sx={{ mx: 2 }} flexItem />
-        <Typography variant="body1">{post.tagsList.join(', ')}</Typography>
+        <Typography variant="body1">{post.tagList.join(', ')}</Typography>
       </Stack>
       <Typography variant="body2">{post.description}</Typography>
     </Box>

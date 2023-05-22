@@ -28,7 +28,7 @@ export async function getPostList(): Promise<Post[]> {
         profileUrl: data.author_url,
         avatarUrl: data.author_image_url,
       },
-      tagsList: data.tags,
+      tagList: data.tags,
       publishedDate: data.date,
       description: excerpt || '',
       mdContent: content,
