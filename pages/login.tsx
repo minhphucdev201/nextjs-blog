@@ -2,8 +2,10 @@ import LoginForm from '@/components/auth/login-form'
 import { MainLayout } from '@/components/layout'
 import { useAuth } from '@/hooks'
 import { LoginPayload } from '@/models'
+import { getErrorMessage } from '@/utils'
 import { Box, Paper, Typography } from '@mui/material'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -16,7 +18,9 @@ export default function LoginPage() {
       await login(payload)
       router.push('/')
     } catch (error) {
-      console.log('fail to login', error)
+      const message = getErrorMessage(error)
+      console.log('fail to login', message)
+      toast.error(message)
     }
   }
   return (

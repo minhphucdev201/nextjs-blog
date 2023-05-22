@@ -21,7 +21,7 @@ export function AdminLayout({ children }: LayoutProps) {
       <h1>Admin layout</h1>
       <Link href="/">Sidebar</Link>
       <p>Profile: {JSON.stringify(profile)}</p>
-      <button onClick={() => handleLogout()}>Logout</button>
+      {/* <button onClick={() => handleLogout()}>Logout</button> */}
       <br />
       <Link href="/">Home</Link>
       <br />

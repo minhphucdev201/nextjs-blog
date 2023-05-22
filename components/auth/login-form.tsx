@@ -28,7 +28,6 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
     resolver: yupResolver(schema),
   })
   async function handleLoginSubmit(payload: LoginPayload) {
-    console.log('values ==>', payload)
     await onSubmit?.(payload)
   }
   return (

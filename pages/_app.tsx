@@ -8,6 +8,9 @@ import { SWRConfig } from 'swr'
 import { createEmotionCache, theme } from '@/utils'
 import axiosClient from '@/api-client/axios-client'
 import { AppPropsWithLayout } from '@/models'
+import { ToastContainer, toast } from 'react-toastify'
+
+import 'react-toastify/dist/ReactToastify.css'
 import '../styles/prism.css'
 // Client-side cache, shared for the whole session of the user in the browser.
 
@@ -21,6 +24,18 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
     <CacheProvider value={clientSideEmotionCache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <SWRConfig value={{ fetcher: (url) => axiosClient.get(url), shouldRetryOnError: false }}>
           <Layout>
             <Component {...pageProps} />
