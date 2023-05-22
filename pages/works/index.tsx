@@ -13,12 +13,22 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
+import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 
 export interface WorksPageProps {}
 
 export default function WorksPage(props: WorksPageProps) {
-  const [filters, setFilters] = useState<Partial<ListParams>>({ _page: 1, _limit: 3 })
+  const router = useRouter()
+  const filters: Partial<ListParams> = {
+    _page: 1,
+    _limit: 3,
+    ...router.query,
+  }
+  const initFiltersPayload: WorkFiltersPayload = {
+    search: filters.title_like || '',
+  }
+  // const [filters, setFilters] = useState<Partial<ListParams>>({ _page: 1, _limit: 3 })
   const { data, isLoading } = useWorkList({ params: filters })
 
   const { _page, _limit, _totalRows } = data?.pagination || {}
@@ -26,18 +36,41 @@ export default function WorksPage(props: WorksPageProps) {
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
     // setPage(value)
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      _page: value,
-    }))
+    // setFilters((prevFilters) => ({
+    //   ...prevFilters,
+    //   _page: value,
+    // }))
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...filters,
+          _page: value,
+        },
+      },
+      undefined,
+      { shallow: true }
+    )
   }
   function handleFiltersChange(newFilters: WorkFiltersPayload) {
-    console.log('==>', newFilters)
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      _page: 1,
-      title_like: newFilters.search,
-    }))
+    // console.log('==>', newFilters)
+    // setFilters((prevFilters) => ({
+    //   ...prevFilters,
+    //   _page: 1,
+    //   title_like: newFilters.search,
+    // }))
+    router.push(
+      {
+        pathname: router.pathname,
+        query: {
+          ...filters,
+          _page: 1,
+          title_like: newFilters.search,
+        },
+      },
+      undefined,
+      { shallow: true }
+    )
   }
   return (
     <Box>
@@ -47,7 +80,9 @@ export default function WorksPage(props: WorksPageProps) {
             Works
           </Typography>
         </Box>
-        <WorkFilters onSubmit={handleFiltersChange} />
+        {router.isReady && (
+          <WorkFilters initialValues={initFiltersPayload} onSubmit={handleFiltersChange} />
+        )}
         <WorkList workList={data?.data || []} loading={isLoading} />
 
         {totalPages > 0 && (
